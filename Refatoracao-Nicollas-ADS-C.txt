@@ -1,0 +1,79 @@
+Questão 1:
+
+def calcular_pedido(lista_produtos):
+    valor_total = 0
+    limite_desconto = 1000
+    percentual_desconto = 0.1
+    desconto_pedido = 0
+
+    for produto in lista_produtos:
+        if produto["em_estoque"]:
+            valor_produto = produto["valor"] * produto["quantidade"]
+            valor_total += valor_produto
+            
+    if valor_total > limite_desconto:
+        desconto_pedido = valor_total * percentual_desconto
+        valor_total -= desconto_pedido
+
+    return valor_total
+
+valor_final = calcular_pedido(lista_produtos)
+print("Valor final:", valor_final)
+
+Nome da função, parâmetros e variáveis: p, t, i, l, a, v, q
+Comparação booleana: Não precisa especificar que "if i["a"] == True" vai ser true. Quando só se deixa apenas o valor, o If já entende que ele precisa ser verdadeiro.
+Valores mágicos: 1000 (mil o que?)
+Operação matemática pouco clara: if t > 1000: t = t - (t * 0.1)cálculo solto.
+Mistura de cálculo e exibição: print("Valor final:", t), return t
+Clareza de intenção: Com o nome real faltando, não dá para entender o que a função faz.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Questão 2:
+
+def calcular_relatorio(lista_funcionarios):
+    contagem_funcionarios = 0
+    salario_totalizado = 0
+    limite_salario = 3000
+    
+    for funcionario in lista_funcionarios:
+        salario = funcionario["salario"]
+        
+        if salario > limite_salario:
+            contagem_funcionarios += 1
+    
+        salario_totalizado += salario
+    
+    
+    return contagem_funcionarios, salario_totalizado
+
+quantidade, total = calcular_relatorio(lista_funcionarios)
+
+print("Quantidade:", quantidade)
+print("Total:", total)
+
+Nome da função, parâmetros e variáveis: r, f, x, y, i, s
+Valor mágico: 3000 (três mil o que?)
+Responsabilidade da função: for i in f: if i["s"] > 3000: x = x + 1
+Clareza das regras de negócio: 3000 (três mil serve para que?)
+Organização do código: print dentro da função
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1. Quais code smells você encontrou?:
+Nome de valores sendo letras, print dentro da função, valor sem explicação e aumento de cálculo desnecessário.
+
+2. Quais mudanças melhoraram a legibilidade?:
+Explicar o que cada valor faz no nome do mesmo, e armazenar valores soltos em variáveis que explicam o que ele faz.
+
+3. Alguma funcionalidade foi alterada? Por quê?:
+Nenhuma. O código já definia o que ia fazer, apenas os nomes que não explicavam direito.
+
+4. Como a refatoração facilita futuras manutenções?:
+Caso o programador precise mudar o código, ele já vai entender certinho o que cada valor faz, ou para que serve, sem precisar adivinhar.
+
+5. Quais princípios de Clean Code foram aplicados?
+Nomenclatura significativa, coesão e refatoração.
+
+6. Há alguma responsabilidade que poderia ser movida para outra função?
+Aplicar desconto nos produtos.
